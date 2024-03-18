@@ -13,38 +13,62 @@ public class SingleResponsibility {
 
         System.out.println("Welcome to the Application!");
 
+        List<Integer> numbers = getInput();
+
+        Collections.sort(numbers);
+
+        printNumbers(numbers);
+    }
+
+
+    private static List<Integer> getInput() {
         Scanner scanner = new Scanner(System.in);
 
-        List<Integer> nums = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
 
         System.out.println("Enter 5 valid integers in the range [0, 10]");
 
-        while (nums.size() < THRESHOLD) {
-
+        while (numbers.size() < THRESHOLD) {
             String s = scanner.nextLine();
 
-            try {
-                Integer.parseInt(s);
-            } catch (NumberFormatException nfe) {
-                System.out.println("Invalid! Try again!");
+            if (!isGivenStringInteger(s)) {
                 continue;
             }
 
             int num = Integer.parseInt(s);
-
-            if (num < 0 || num > 10) {
-                System.out.println("Invalid range! Try again!");
-                continue;
+            if (isInRange(num)) {
+                numbers.add(num);
             }
-
-            nums.add(num);
         }
 
         scanner.close();
-
-        Collections.sort(nums);
-
-        for (int num : nums)
-            System.out.print(num + " ");
+        return numbers;
     }
+
+
+    private static boolean isGivenStringInteger(String s) {
+        try {
+            Integer.parseInt(s);
+            return true;
+
+        } catch (NumberFormatException nfe) {
+            System.err.println(s + " is not a number! Try again!");
+            return false;
+        }
+    }
+
+
+    private static boolean isInRange(int num) {
+        if (num < 0 || num > 10) {
+            System.err.println("Invalid range! Try again!");
+            return false;
+        }
+        return true;
+    }
+
+
+    private static void printNumbers(List<Integer> numbers) {
+        numbers.forEach(number -> System.out.print(number + " "));
+    }
+
 }
