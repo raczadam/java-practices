@@ -52,7 +52,7 @@ public class SingleResponsibility {
             return true;
 
         } catch (NumberFormatException nfe) {
-            System.err.println(s + " is not a number! Try again!");
+            System.err.println(STR."\{s} is not a number! Try again!");
             return false;
         }
     }
@@ -68,7 +68,7 @@ public class SingleResponsibility {
 
 
     private static void printNumbers(List<Integer> numbers) {
-        numbers.forEach(number -> System.out.print(number + " "));
+        numbers.forEach(number -> System.out.print(STR."\{number} "));
     }
 
 }
