@@ -1,4 +1,4 @@
-package com.raczadam.design_patterns.solid.liskov_subtitution;
+package com.raczadam.design_patterns.solid.liskov_substitution;
 
 import static java.lang.StringTemplate.STR;
 
