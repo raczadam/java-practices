@@ -1,6 +1,5 @@
-package com.raczadam.leetcode_practice.easy;
+package com.raczadam.leetcode_practice.medium;
 
-import com.raczadam.leetcode_practice.medium.RotatingTheBox;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
