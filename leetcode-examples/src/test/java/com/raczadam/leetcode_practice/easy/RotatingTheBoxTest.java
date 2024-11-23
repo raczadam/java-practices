@@ -1,25 +1,75 @@
 package com.raczadam.leetcode_practice.easy;
 
+import com.raczadam.leetcode_practice.medium.RotatingTheBox;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class RotatingTheBoxTest {
 
 
+    private final RotatingTheBox rotatingTheBox = new RotatingTheBox();
+
+
     @Test
     void rotateTheBoxCaseOne() {
-        // FIXME
+        /*
+        Input: box = [['#','.','#']]
+        Output: [['.'],
+                 ['#'],
+                 ['#']]
+         */
+        char[][] input = new char[][]{{'#', '.', '#'}};
+        char[][] expected = new char[][]{{'.'},
+                {'#'},
+                {'#'}};
+        assertArrayEquals(expected, rotatingTheBox.rotateTheBox(input));
     }
 
 
     @Test
     void rotateTheBoxCaseTwo() {
-        // FIXME
+        /*
+        Input: box = [['#','.','*','.'],
+              ['#','#','*','.']]
+        Output: [['#','.'],
+                 ['#','#'],
+                 ['*','*'],
+                 ['.','.']]
+         */
+        char[][] input = new char[][]{{'#', '.', '*', '.'},
+                {'#', '#', '*', '.'}};
+        char[][] expected = new char[][]{{'#', '.'},
+                {'#', '#'},
+                {'*', '*'},
+                {'.', '.'}};
+        assertArrayEquals(expected, rotatingTheBox.rotateTheBox(input));
     }
 
 
     @Test
     void rotateTheBoxCaseThree() {
-        // FIXME
+        /*
+        Input: box = [['#','#','*','.','*','.'],
+              ['#','#','#','*','.','.'],
+              ['#','#','#','.','#','.']]
+        Output: [['.','#','#'],
+                 ['.','#','#'],
+                 ['#','#','*'],
+                 ['#','*','.'],
+                 ['#','.','*'],
+                 ['#','.','.']]
+         */
+        char[][] input = new char[][]{{'#', '#', '*', '.', '*', '.'},
+                {'#', '#', '#', '*', '.', '.'},
+                {'#', '#', '#', '.', '#', '.'}};
+        char[][] expected = new char[][]{{'.', '#', '#'},
+                {'.', '#', '#'},
+                {'#', '#', '*'},
+                {'#', '*', '.'},
+                {'#', '.', '*'},
+                {'#', '.', '.'}};
+        assertArrayEquals(expected, rotatingTheBox.rotateTheBox(input));
     }
 
 
