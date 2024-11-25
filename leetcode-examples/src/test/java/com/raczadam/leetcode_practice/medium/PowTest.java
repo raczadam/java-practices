@@ -40,4 +40,14 @@ class PowTest {
     }
 
 
+    @Test
+    void myPowCaseFour() {
+        /*
+        Input: x = 2.00000, n = -2147483648
+        Output: 0.00000
+         */
+        assertEquals(0.00000, pow.myPow(2.00000, -2147483648));
+    }
+
+
 }
