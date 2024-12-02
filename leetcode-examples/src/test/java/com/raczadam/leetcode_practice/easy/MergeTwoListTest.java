@@ -16,14 +16,6 @@ class MergeTwoListTest {
 
     private final MergeTwoList mergeTwoList = new MergeTwoList();
 
-    @ParameterizedTest
-    @CsvSource("'0,2,3,4'")
-    void test_arrayToListNode(@ConvertWith(IntArrayConverter.class) int[] array) {
-        MergeTwoList.ListNode resultNode = mergeTwoList.arrayToListNode(array);
-        assertArrayEquals(array, mergeTwoList.nodeToArray(resultNode));
-    }
-
-
     private static class IntArrayConverter implements ArgumentConverter {
 
         @Override
@@ -42,5 +34,14 @@ class MergeTwoListTest {
         }
 
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"'0,2,3,4'", "'1,2,3,4'", "'0'"})
+    void test_arrayToListNode(@ConvertWith(IntArrayConverter.class) int[] array) {
+        MergeTwoList.ListNode resultNode = mergeTwoList.arrayToListNode(array);
+        assertArrayEquals(array, mergeTwoList.nodeToArray(resultNode));
+    }
+
+
 
 }
