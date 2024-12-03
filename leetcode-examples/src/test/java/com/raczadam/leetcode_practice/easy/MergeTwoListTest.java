@@ -1,6 +1,7 @@
 package com.raczadam.leetcode_practice.easy;
 
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ArgumentConversionException;
@@ -42,6 +43,23 @@ class MergeTwoListTest {
         assertArrayEquals(array, mergeTwoList.nodeToArray(resultNode));
     }
 
+
+    @Test
+    void test_arrayToListNode_emptyArrayGiven() {
+        int[] array = new int[0];
+        MergeTwoList.ListNode resultNode = mergeTwoList.arrayToListNode(array);
+        assertArrayEquals(array, mergeTwoList.nodeToArray(resultNode));
+    }
+
+
+    @Test
+    void test_mergeTwoList() {
+        MergeTwoList.ListNode listNode1 = mergeTwoList.arrayToListNode(new int[]{1, 1, 2, 3, 4});
+        MergeTwoList.ListNode listNode2 = mergeTwoList.arrayToListNode(new int[]{1, 2, 3, 5});
+        int[] expected = new int[]{1, 1, 1, 2, 2, 3, 3, 4, 5};
+        MergeTwoList.ListNode result = mergeTwoList.mergeTwoLists(listNode1, listNode2);
+        assertArrayEquals(expected, mergeTwoList.nodeToArray(result));
+    }
 
 
 }

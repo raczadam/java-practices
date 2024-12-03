@@ -1,7 +1,9 @@
 package com.raczadam.leetcode_practice.easy;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class MergeTwoList {
 
@@ -22,17 +24,17 @@ public class MergeTwoList {
         }
     }
 
-    public MergeTwoList.ListNode arrayToListNode(int[] array) {
+    public ListNode arrayToListNode(int[] array) {
         int length = array.length;
         if (length == 0) {
-            return new MergeTwoList.ListNode();
+            return null;
         }
         if (length == 1) {
-            return new MergeTwoList.ListNode(array[0]);
+            return new ListNode(array[0]);
         }
-        MergeTwoList.ListNode result = new MergeTwoList.ListNode(array[length - 1]);
+        ListNode result = new ListNode(array[length - 1]);
         for (int i = length - 2; i >= 0; i--) {
-            result = new MergeTwoList.ListNode(array[i], result);
+            result = new ListNode(array[i], result);
         }
         return result;
     }
@@ -55,8 +57,10 @@ public class MergeTwoList {
     }
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        // FIXME
-        return null;
+        int[] arr1 = IntStream.concat(Arrays.stream(nodeToArray(list1)),
+                Arrays.stream(nodeToArray(list2))).toArray();
+        Arrays.sort(arr1);
+        return arrayToListNode(arr1);
     }
 
 }
