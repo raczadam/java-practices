@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class MergeKListsTest {
+class MergeKListsTest {
 
     private final MergeKLists mergeKLists = new MergeKLists();
 
