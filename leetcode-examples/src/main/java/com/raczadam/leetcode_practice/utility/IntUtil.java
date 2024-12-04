@@ -5,6 +5,10 @@ import java.util.Arrays;
 public class IntUtil {
 
 
+    private IntUtil() {
+    }
+
+
     public static int[] reduceTwoDimensionalArray(int[][] base) {
         int length = 0;
         if (base != null) {
