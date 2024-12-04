@@ -40,4 +40,15 @@ class MaxAreaTest {
     }
 
 
+    // this is custom
+    @Test
+    void maxAreaCaseFour() {
+        /*
+        Input: height = [1, 3, 2, 5, 24, 25, 5, 42, 6, 10]
+        Output: 72
+        */
+        assertEquals(72, maxArea.maxArea(new int[]{1, 3, 2, 5, 24, 25, 5, 42, 6, 10}));
+    }
+
+
 }
