@@ -1,6 +1,5 @@
 package com.raczadam.leetcode_practice.medium;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,10 +17,10 @@ public class CountVowelStringsInRanges {
                 .mapToInt(Integer::intValue).toArray();
     }
 
+
     private int[] getPreCounted(String[] words) {
         int length = words.length;
         int[] preCounted = new int[length];
-
         for (int i = 0; i < length; i++) {
             if (isFirstAndLastCharVowel(words[i])) {
                 preCounted[i]++;
@@ -33,9 +32,11 @@ public class CountVowelStringsInRanges {
         return preCounted;
     }
 
+
     private boolean isFirstAndLastCharVowel(String string) {
         return VOWELS.contains(string.charAt(0)) && VOWELS.contains(string.charAt(string.length() - 1));
     }
+
 
     private int getNumberOfCorrectVowelStrings(int[] stringIndexes, int queryStartIndex, int queryEndIndex) {
         if (queryStartIndex == 0) {
