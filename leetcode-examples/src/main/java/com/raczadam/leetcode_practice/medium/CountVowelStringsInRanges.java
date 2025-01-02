@@ -1,5 +1,6 @@
 package com.raczadam.leetcode_practice.medium;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,28 +11,38 @@ public class CountVowelStringsInRanges {
     private static final List<Character> VOWELS = List.of('a', 'e', 'i', 'o', 'u');
 
     public int[] vowelStrings(String[] words, int[][] queries) {
-        List<Boolean> correctVowels = Arrays.stream(words).map(this::isFirstAndLastCharVowel).toList();
+        int[] stringsIndexes = getPreCounted(words);
         return Arrays
                 .stream(queries)
-                .map(query -> getNumberOfCorrectVowelStrings(correctVowels, query[0], query[1]))
+                .map(query -> getNumberOfCorrectVowelStrings(stringsIndexes, query[0], query[1]))
                 .mapToInt(Integer::intValue).toArray();
     }
 
+    private int[] getPreCounted(String[] words) {
+        int length = words.length;
+        int[] preCounted = new int[length];
 
-    private boolean isFirstAndLastCharVowel(String string) {
-        return VOWELS.contains(string.charAt(0))
-                && VOWELS.contains(string.charAt(string.length() - 1));
-    }
-
-
-    private int getNumberOfCorrectVowelStrings(List<Boolean> stringIndexes, int startIndex, int endIndex) {
-        int count = 0;
-        for (int i = startIndex; i <= endIndex; i++) {
-            if(stringIndexes.get(i)){
-                count++;
+        for (int i = 0; i < length; i++) {
+            if (isFirstAndLastCharVowel(words[i])) {
+                preCounted[i]++;
             }
         }
-        return count;
+        for (int i = 1; i < length; i++) {
+            preCounted[i] += preCounted[i - 1];
+        }
+        return preCounted;
+    }
+
+    private boolean isFirstAndLastCharVowel(String string) {
+        return VOWELS.contains(string.charAt(0)) && VOWELS.contains(string.charAt(string.length() - 1));
+    }
+
+    private int getNumberOfCorrectVowelStrings(int[] stringIndexes, int queryStartIndex, int queryEndIndex) {
+        if (queryStartIndex == 0) {
+            return stringIndexes[queryEndIndex];
+        } else {
+            return stringIndexes[queryEndIndex] - stringIndexes[queryStartIndex - 1];
+        }
     }
 
 
