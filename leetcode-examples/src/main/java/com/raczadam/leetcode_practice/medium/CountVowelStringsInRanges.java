@@ -1,6 +1,5 @@
 package com.raczadam.leetcode_practice.medium;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,22 +10,13 @@ public class CountVowelStringsInRanges {
     private static final List<Character> VOWELS = List.of('a', 'e', 'i', 'o', 'u');
 
     public int[] vowelStrings(String[] words, int[][] queries) {
-        List<Integer> stringsIndexes = stringIndexes(words);
+        List<Boolean> correctVowels = Arrays.stream(words).map(this::isFirstAndLastCharVowel).toList();
         return Arrays
                 .stream(queries)
-                .map(query -> getNumberOfCorrectVowelStrings(stringsIndexes, query[0], query[1]))
+                .map(query -> getNumberOfCorrectVowelStrings(correctVowels, query[0], query[1]))
                 .mapToInt(Integer::intValue).toArray();
     }
 
-    private List<Integer> stringIndexes(String[] words) {
-        List<Integer> stringsIndexes = new ArrayList<>();
-        for (int i = 0; i < words.length; i++) {
-            if (isFirstAndLastCharVowel(words[i])) {
-                stringsIndexes.add(i);
-            }
-        }
-        return stringsIndexes;
-    }
 
     private boolean isFirstAndLastCharVowel(String string) {
         return VOWELS.contains(string.charAt(0))
@@ -34,15 +24,14 @@ public class CountVowelStringsInRanges {
     }
 
 
-    private int getNumberOfCorrectVowelStrings(List<Integer> stringIndexes, int queryStartIndex, int queryEndIndex) {
-        // FIXME
-        // at first, we should count the concrete value of queryStartIndex
-        // (if stringIndexes list does not contain its value)
-        // and the queryEndIndex.
-
-        int startIndex = stringIndexes.get(queryStartIndex);
-        int endIndex = stringIndexes.get(queryEndIndex);
-        return endIndex - startIndex;
+    private int getNumberOfCorrectVowelStrings(List<Boolean> stringIndexes, int startIndex, int endIndex) {
+        int count = 0;
+        for (int i = startIndex; i <= endIndex; i++) {
+            if(stringIndexes.get(i)){
+                count++;
+            }
+        }
+        return count;
     }
 
 
