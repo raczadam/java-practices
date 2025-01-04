@@ -7,8 +7,8 @@ public class UniqueLength3PalindromicSubsequences {
 
     public int countPalindromicSubsequence(String s) {
         int len = s.length();
-        Map<Character, int[]> occurrences = new HashMap<>();
 
+        Map<Character, int[]> occurrences = new HashMap<>();
         for (int i = 0; i < len; i++) {
             char key = s.charAt(i);
             if (!occurrences.containsKey(key)) {
@@ -22,10 +22,9 @@ public class UniqueLength3PalindromicSubsequences {
         for (Map.Entry<Character, int[]> entry : occurrences.entrySet()) {
             int[] indexes = entry.getValue();
             if (indexes[0] < indexes[1]) {
-                String sub = s.substring(indexes[0] + 1, indexes[1]);
                 Set<Character> uniqueChars = new LinkedHashSet<>();
-                for (char c : sub.toCharArray()) {
-                    uniqueChars.add(c);
+                for (int i = indexes[0] + 1; i < indexes[1]; i++) {
+                    uniqueChars.add(s.charAt(i));
                 }
                 count += uniqueChars.size();
             }
