@@ -4,7 +4,8 @@ public class PalindromeNumber {
 
 
     public boolean isPalindrome(int x) {
-        return false;
+        String s = Integer.toString(x);
+        return s.contentEquals(new StringBuilder(s).reverse());
     }
 
 }
