@@ -6,10 +6,7 @@ public class ReverseWordsInAString {
 
 
     public String reverseWords(String s) {
-        return String.join(" ", Arrays
-                        .asList(s.split("\\s+"))
-                        .reversed())
-                .trim();
+        return String.join(" ", Arrays.asList(s.split("\\s+")).reversed()).trim();
     }
 
 
