@@ -18,7 +18,7 @@ class MergeTwoListTest {
     @ParameterizedTest
     @CsvSource(value = {"'0,2,3,4'", "'1,2,3,4'", "'0'"})
     void test_arrayToListNode(@ConvertWith(IntArrayConverter.class) int[] array) {
-        MergeTwoList.ListNode resultNode = mergeTwoList.arrayToListNode(array);
+        ListNode resultNode = mergeTwoList.arrayToListNode(array);
         assertArrayEquals(array, mergeTwoList.nodeToArray(resultNode));
     }
 
@@ -26,17 +26,17 @@ class MergeTwoListTest {
     @Test
     void test_arrayToListNode_emptyArrayGiven() {
         int[] array = new int[0];
-        MergeTwoList.ListNode resultNode = mergeTwoList.arrayToListNode(array);
+        ListNode resultNode = mergeTwoList.arrayToListNode(array);
         assertArrayEquals(array, mergeTwoList.nodeToArray(resultNode));
     }
 
 
     @Test
     void test_mergeTwoList() {
-        MergeTwoList.ListNode listNode1 = mergeTwoList.arrayToListNode(new int[]{1, 1, 2, 3, 4});
-        MergeTwoList.ListNode listNode2 = mergeTwoList.arrayToListNode(new int[]{1, 2, 3, 5});
+        ListNode listNode1 = mergeTwoList.arrayToListNode(new int[]{1, 1, 2, 3, 4});
+        ListNode listNode2 = mergeTwoList.arrayToListNode(new int[]{1, 2, 3, 5});
         int[] expected = new int[]{1, 1, 1, 2, 2, 3, 3, 4, 5};
-        MergeTwoList.ListNode result = mergeTwoList.mergeTwoLists(listNode1, listNode2);
+        ListNode result = mergeTwoList.mergeTwoLists(listNode1, listNode2);
         assertArrayEquals(expected, mergeTwoList.nodeToArray(result));
     }
 
