@@ -1,5 +1,7 @@
 package com.raczadam.leetcode_practice.easy;
 
+import com.raczadam.leetcode_practice.utility.structure.TreeNode;
+
 // https://leetcode.com/problems/invert-binary-tree/description/
 public class InvertBinaryTree {
 
@@ -17,33 +19,6 @@ public class InvertBinaryTree {
         invertTree(root.right);
 
         return root;
-    }
-
-
-    public class TreeNode {
-
-
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-
-        TreeNode() {
-        }
-
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-
-
     }
 
 
