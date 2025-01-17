@@ -4,7 +4,11 @@ public class NeighboringBitwiseXOR {
 
 
     public boolean doesValidArrayExist(int[] derived) {
-        return false;
+        int xor = 0;
+        for (int j : derived) {
+            xor ^= j;
+        }
+        return xor == 0;
     }
 
 
