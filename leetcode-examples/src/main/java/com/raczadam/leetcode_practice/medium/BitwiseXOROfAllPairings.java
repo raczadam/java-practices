@@ -8,14 +8,14 @@ public class BitwiseXOROfAllPairings {
         int xor2 = 0;
 
         if (nums2.length % 2 != 0) {
-            for (int i = 0; i < nums1.length; i++) {
-                xor1 ^= nums1[i];
+            for (int j : nums1) {
+                xor1 ^= j;
             }
         }
 
         if (nums1.length % 2 != 0) {
-            for (int i = 0; i < nums2.length; i++) {
-                xor2 ^= nums2[i];
+            for (int j : nums2) {
+                xor2 ^= j;
             }
         }
         return xor1 ^ xor2;
