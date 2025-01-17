@@ -2,6 +2,7 @@ package com.raczadam.leetcode_practice.easy;
 
 
 import com.raczadam.leetcode_practice.IntArrayConverter;
+import com.raczadam.leetcode_practice.utility.structure.ListNode;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;

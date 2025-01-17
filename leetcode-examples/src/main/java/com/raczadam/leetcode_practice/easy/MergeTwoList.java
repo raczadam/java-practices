@@ -1,5 +1,7 @@
 package com.raczadam.leetcode_practice.easy;
 
+import com.raczadam.leetcode_practice.utility.structure.ListNode;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
