@@ -3,7 +3,15 @@ package org.example;
 /**
  * Hello world!
  */
-public class App {
+public class NativeMethodCallExample {
+
+
+    /*
+    TODO: include the rust code too (in a different package,
+    TODO and modify the System.load script to use so in linux
+    TODO and add relative path
+     */
+
 
     static {
         //System.loadLibrary("hello");
@@ -19,6 +27,8 @@ public class App {
 
     }
 
+
     public static native boolean palindrome(String input);
+
 
 }
