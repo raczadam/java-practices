@@ -1,8 +1,10 @@
 package com.example.pi;
 
+import java.math.BigDecimal;
+
 @FunctionalInterface
 public interface PiCalculator {
 
-    double calculate(int n);
+    BigDecimal calculate(int n);
 
 }
