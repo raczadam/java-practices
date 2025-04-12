@@ -15,7 +15,8 @@ public class Main {
         System.out.println("PI value, according to JVM: " + Math.PI);
         System.out.println("*************************************************************");
 
-        calculate(new RiemannZeta(), 100_000_000);
+        //calculate(new RiemannZeta(), 100_000_000);
+        calculate(new ChudnovskyAlgorithm(), 2);
     }
 
     private static void calculate(PiCalculator calculator, int n) {
