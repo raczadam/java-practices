@@ -1,4 +1,4 @@
-package com.raczadam;
+package com.raczadam.concurrency.basic;
 
 public class BasicThreadExample {
 
