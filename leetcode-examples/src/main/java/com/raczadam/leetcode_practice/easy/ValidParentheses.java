@@ -1,39 +1,31 @@
 package com.raczadam.leetcode_practice.easy;
 
-import java.util.Stack;
+import java.util.*;
 
 public class ValidParentheses {
 
 
     public boolean isValid(String s) {
-        char[] chars = s.toCharArray();
-        if (chars.length % 2 != 0) {
+        if (s.length() % 2 != 0) {
             return false;
         }
-        Stack<Character> stack = new Stack<>();
-        String opening = "([{";
-        String closing = ")]}";
-        int numOfOpeningTags = 0;
-        int numOfClosingTags = 0;
-        for (char current : chars) {
-            int index = opening.indexOf(current);
-            if (index >= 0) {
-                stack.add(current);
-                numOfOpeningTags++;
+
+        Map<Character, Character> pairs = new HashMap<>();
+        pairs.put(')', '(');
+        pairs.put(']', '[');
+        pairs.put('}', '{');
+
+        Deque<Character> stack = new ArrayDeque<>();
+        for (char ch : s.toCharArray()) {
+            if (pairs.containsKey(ch)) {
+                if (stack.isEmpty() || stack.pop() != pairs.get(ch)) {
+                    return false;
+                }
             } else {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                index = closing.indexOf(current);
-                char fromStack = stack.peek();
-                if (index < 0 || opening.charAt(index) != fromStack) {
-                    return false;
-                }
-                stack.pop();
-                numOfClosingTags++;
+                stack.push(ch);
             }
         }
-        return numOfOpeningTags == numOfClosingTags;
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {
