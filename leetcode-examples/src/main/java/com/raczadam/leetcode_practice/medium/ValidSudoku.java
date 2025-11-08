@@ -1,12 +1,11 @@
 package com.raczadam.leetcode_practice.medium;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+
+import java.util.*;
 
 public class ValidSudoku {
 
-    public boolean isValidSudoku(char[][] board) {
+    public boolean isValidSudoku1(char[][] board) {
         for (char[] row : board) {
             if (isNotValidSegment(row)) {
                 return false;
@@ -37,7 +36,6 @@ public class ValidSudoku {
                 }
             }
         }
-
         return true;
     }
 
@@ -50,5 +48,55 @@ public class ValidSudoku {
         }
         return characterList.size() != new HashSet<>(characterList).size();
     }
+
+    public boolean isValidSudoku(char[][] board) {
+        final char emptyCell = '.';
+        Set<Character>[] rows = new Set[9];
+        for (int i = 0; i < 9; i++) {
+            rows[i] = new HashSet<>();
+        }
+
+        Set<Character>[] columns = new Set[9];
+        for (int i = 0; i < 9; i++) {
+            columns[i] = new HashSet<>();
+        }
+
+        Set<Character>[][] segments = new Set[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                segments[i][j] = new HashSet<>();
+            }
+        }
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                // Row cell: (i, j)
+                char r = board[i][j];
+                if (r != emptyCell) {
+                    // row check
+                    if (!rows[i].add(r)){
+                        return false;
+                    }
+                    // segment check for (i,j)
+                    int br = i / 3;
+                    int bc = j / 3;
+                    if (!segments[br][bc].add(r)){
+                        return false;
+                    }
+                }
+
+                // Column cell: (j, i)
+                char c = board[j][i];
+                if (c != emptyCell) {
+                    // column check
+                    if (!columns[i].add(c)){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
 
 }
